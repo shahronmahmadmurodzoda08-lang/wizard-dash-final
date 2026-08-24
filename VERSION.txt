@@ -1,5 +1,0 @@
-Wizard Dash: Arcane Neon FINAL
-Android-only
-20 worlds × 100 missions = 2,000 mission slots
-Daily Wheel: 1 spin / 24h
-Offline WebView game; progress saved locally
