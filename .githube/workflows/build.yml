@@ -1,0 +1,65 @@
+name: Build Wizard Dash Android
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wizard-dash-android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  android-apk:
+    name: Build installable Android APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        run: |
+          sdkmanager "platform-tools" "platforms;android-35" "build-tools;34.0.0"
+
+      - name: Set up Gradle 8.9.2
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: "8.9.2"
+
+      - name: Check toolchain
+        run: |
+          java -version
+          gradle --version
+
+      - name: Build debug APK
+        run: |
+          gradle --no-daemon --no-parallel --max-workers=2 --stacktrace assembleDebug
+
+      - name: Verify APK
+        run: |
+          test -s app/build/outputs/apk/debug/app-debug.apk
+          ls -lh app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Upload installable APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: wizard-dash-debug-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
