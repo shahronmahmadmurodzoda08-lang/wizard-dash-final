@@ -1,2 +1,0 @@
-# wizard-dash-final
-🎮
