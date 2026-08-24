@@ -1,0 +1,10 @@
+{
+  "name":"Wizard Dash",
+  "short_name":"Wizard Dash",
+  "start_url":"index.html",
+  "display":"standalone",
+  "background_color":"#050610",
+  "theme_color":"#070817",
+  "orientation":"portrait",
+  "icons":[{"src":"logo.jpg","sizes":"512x512","type":"image/jpeg"}]
+}

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#070817">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Wizard Dash</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <button class="profile-chip" data-screen="profile">
+      <div class="avatar" id="topAvatar">🧙</div>
+      <div class="profile-copy"><strong id="topName">ArcaneX</strong><small>Lv.<span id="topLevel">1</span> • <span id="topRank">Rookie</span></small></div>
+    </button>
+    <div class="wallet">
+      <span>🪙 <b id="gold">1250</b></span>
+      <span>💎 <b id="diamonds">30</b></span>
+    </div>
+    <button class="icon-btn" data-screen="settings">⚙️</button>
+  </header>
+
+  <main id="screen-home" class="screen active">
+    <section class="hero-card">
+      <div class="hero-copy">
+        <div class="eyebrow">WIZARD DASH</div>
+        <h1>Dash. Cast. Destroy.</h1>
+        <p>20 worlds • 2,000 missions • bosses • gear • skills</p>
+        <button class="cta" data-action="continue">⚔️ CONTINUE MISSION</button>
+      </div>
+      <div class="hero-orb">🔮</div>
+    </section>
+
+    <section class="quick-stats">
+      <div><span>❤️</span><b id="homeHp">100</b><small>HP</small></div>
+      <div><span>⚔️</span><b id="homePower">20</b><small>POWER</small></div>
+      <div><span>⚡</span><b id="homeSpeed">10</b><small>SPEED</small></div>
+      <div><span>🛡️</span><b id="homeDefense">10</b><small>DEFENSE</small></div>
+    </section>
+
+    <section class="home-grid">
+      <button class="menu-card purple" data-screen="worlds"><span>🗺️</span><b>WORLDS</b><small>20 maps • 100 missions each</small></button>
+      <button class="menu-card gold" data-screen="shop"><span>🏪</span><b>SHOP</b><small>Weapons • skins • armor • magic</small></button>
+      <button class="menu-card blue" data-screen="inventory"><span>🎒</span><b>INVENTORY</b><small>Equip your best gear</small></button>
+      <button class="menu-card green" data-screen="power"><span>💪</span><b>POWER CENTER</b><small>Upgrade HP • speed • power</small></button>
+      <button class="menu-card red" data-screen="wheel"><span>🎡</span><b>DAILY GIFT</b><small>One free spin every day</small></button>
+      <button class="menu-card cyan" data-screen="friends"><span>👥</span><b>FRIENDS</b><small>Offline duel • online-ready</small></button>
+    </section>
+
+    <section class="progress-card">
+      <div><div><b id="progressTitle">World 1</b><span id="progressText">Mission 1 / 100</span></div><div class="bar"><i id="progressBar"></i></div></div>
+      <button data-screen="worlds">MAP</button>
+    </section>
+  </main>
+
+  <main id="screen-worlds" class="screen">
+    <div class="screen-head"><button class="back" data-screen="home">←</button><div><h2>WORLD MAP</h2><p>Complete missions to unlock the next world.</p></div></div>
+    <div id="worldGrid" class="world-grid"></div>
+  </main>
+
+  <main id="screen-missions" class="screen">
+    <div class="screen-head"><button class="back" data-screen="worlds">←</button><div><h2 id="missionWorldTitle">WORLD 1</h2><p>100 missions • Boss at 100</p></div></div>
+    <div id="missionGrid" class="mission-grid"></div>
+  </main>
+
+  <main id="screen-battle" class="screen battle-screen">
+    <div class="battle-hud">
+      <div><small id="battleWorld">WORLD 1 • MISSION 1</small><div class="battle-player"><span id="battleAvatar">🧙</span><div><b id="battleName">ArcaneX</b><div class="hpbar"><i id="playerHpBar"></i></div><small id="playerHpText">100 / 100</small></div></div></div>
+      <div class="timer" id="battleTimer">02:00</div>
+      <div class="battle-wallet">🪙 <span id="battleGold">1250</span> 💎 <span id="battleDiamonds">30</span></div>
+    </div>
+    <div class="battle-arena">
+      <div class="mission-objective"><b id="objectiveTitle">DEFEAT ALL ENEMIES</b><small id="objectiveText">Enemies remaining: 3</small></div>
+      <div id="arena"></div>
+      <div class="boss-label hidden" id="bossLabel">👑 BOSS</div>
+      <div class="damage-float" id="damageFloat"></div>
+    </div>
+    <div class="combat-actions">
+      <button class="round" data-combat="move-left">←</button>
+      <button class="round" data-combat="attack">⚔️</button>
+      <button class="round" data-combat="move-up">↑</button>
+      <button class="round" data-combat="skill">⚡</button>
+      <button class="round" data-combat="magic">🔮</button>
+      <button class="round" data-combat="move-right">→</button>
+    </div>
+    <div class="battle-skills">
+      <button data-combat="dash">💨 DASH</button>
+      <button data-combat="shield">🛡️ SHIELD</button>
+      <button data-combat="heal">🧪 HEAL</button>
+      <button data-combat="ultimate">✨ ULTIMATE</button>
+    </div>
+    <button class="battle-exit" data-action="quit-battle">✕</button>
+  </main>
+
+  <main id="screen-shop" class="screen">
+    <div class="screen-head"><button class="back" data-screen="home">←</button><div><h2>SHOP</h2><p>Buy gear with Gold or Diamonds.</p></div></div>
+    <div class="tabs" id="shopTabs"></div>
+    <div id="shopGrid" class="item-grid"></div>
+  </main>
+
+  <main id="screen-inventory" class="screen">
+    <div class="screen-head"><button class="back" data-screen="home">←</button><div><h2>INVENTORY</h2><p>Equip your strongest items.</p></div></div>
+    <div class="loadout" id="loadout"></div>
+    <div id="inventoryGrid" class="item-grid"></div>
+  </main>
+
+  <main id="screen-power" class="screen">
+    <div class="screen-head"><button class="back" data-screen="home">←</button><div><h2>POWER CENTER</h2><p>Upgrades are expensive but permanent.</p></div></div>
+    <div class="power-card"><div class="power-hero" id="powerHero">💪</div><h3 id="powerLevelText">Power Level 1</h3><p>Spend Gold to permanently increase your combat stats.</p></div>
+    <div id="upgradeGrid" class="upgrade-grid"></div>
+  </main>
+
+  <main id="screen-wheel" class="screen">
+    <div class="screen-head"><button class="back" data-screen="home">←</button><div><h2>DAILY GIFT</h2><p>Spin once every 24 hours.</p></div></div>
+    <div class="wheel-card"><div class="wheel" id="wheel">🎁</div><button class="cta" id="spinButton">🎡 SPIN FREE WHEEL</button><p id="wheelStatus">Your free spin is ready.</p></div>
+    <div class="reward-list" id="rewardList"></div>
+  </main>
+
+  <main id="screen-profile" class="screen">
+    <div class="screen-head"><button class="back" data-screen="home">←</button><div><h2>PROFILE</h2><p>Your wizard profile and progress.</p></div></div>
+    <div class="profile-panel"><div class="big-avatar" id="profileAvatar">🧙</div><h2 id="profileName">ArcaneX</h2><p>Level <b id="profileLevel">1</b> • <span id="profileRank">Rookie</span></p><div class="xpbar"><i id="xpBar"></i></div><small id="xpText">0 / 100 XP</small></div>
+    <div class="avatar-grid" id="avatarGrid"></div>
+    <div class="achievement-grid" id="achievementGrid"></div>
+  </main>
+
+  <main id="screen-friends" class="screen">
+    <div class="screen-head"><button class="back" data-screen="home">←</button><div><h2>FRIENDS</h2><p>Play offline or connect to an online room.</p></div></div>
+    <div class="online-card"><div class="online-dot"></div><div><b id="connectionTitle">OFFLINE MODE</b><small id="connectionText">Everything works without internet.</small></div><button id="onlineToggle">ONLINE</button></div>
+    <div class="room-card"><label>ROOM CODE</label><div class="room-code" id="roomCode">WD-4821</div><button data-action="copy-room">📋 COPY ROOM CODE</button></div>
+    <div class="friend-list" id="friendList"></div>
+    <button class="cta full" data-action="duel">⚔️ START FRIEND DUEL</button>
+  </main>
+
+  <main id="screen-settings" class="screen">
+    <div class="screen-head"><button class="back" data-screen="home">←</button><div><h2>SETTINGS</h2><p>Game options and save data.</p></div></div>
+    <div class="settings-list">
+      <button id="soundToggle">🔊 SOUND <span>ON</span></button>
+      <button id="vibrateToggle">📳 VIBRATION <span>ON</span></button>
+      <button id="languageToggle">🌐 LANGUAGE <span>EN</span></button>
+      <button data-action="save">💾 SAVE NOW</button>
+      <button class="danger" data-action="reset">♻️ RESET PROGRESS</button>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <button data-screen="home">🏠<small>HOME</small></button>
+    <button data-screen="worlds">🗺️<small>MAP</small></button>
+    <button data-screen="shop">🏪<small>SHOP</small></button>
+    <button data-screen="inventory">🎒<small>ITEMS</small></button>
+    <button data-screen="profile">👤<small>PROFILE</small></button>
+  </nav>
+</div>
+<div id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
