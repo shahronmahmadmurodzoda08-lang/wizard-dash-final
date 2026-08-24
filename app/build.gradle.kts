@@ -1,23 +1,16 @@
-plugins {
-    id("com.android.application")
-}
-
+plugins { id("com.android.application") }
 android {
     namespace = "com.grimoire.wizarddash"
     compileSdk = 35
-
     defaultConfig {
         applicationId = "com.grimoire.wizarddash"
         minSdk = 23
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 4
+        versionName = "4.0.0"
     }
-
     buildTypes {
-        debug {
-            applicationIdSuffix = ".debug"
-            versionNameSuffix = "-debug"
-        }
+        release { isMinifyEnabled = false; isShrinkResources = false }
+        debug { isDebuggable = true }
     }
 }
