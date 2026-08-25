@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#070711">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Wizard Dash</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/screens.css">
+</head>
+<body>
+  <div id="orientation" class="orientation">
+    <div class="orientation-card"><div class="rotate-icon">⟳</div><h2>ROTATE DEVICE</h2><p>Wizard Dash is designed for landscape play.</p></div>
+  </div>
+
+  <main id="app">
+    <section id="splash" class="screen active">
+      <div class="splash-art"></div>
+      <div class="splash-overlay"></div>
+      <div class="splash-title"><span>WIZARD</span><b>DASH</b><small>DASH. CAST. DESTROY.</small></div>
+      <div class="loading"><div id="loading-bar"></div></div>
+      <div id="loading-text">LOADING 0%</div>
+    </section>
+
+    <section id="login" class="screen">
+      <div class="login-art"></div>
+      <div class="login-panel">
+        <div class="brand">WIZARD <b>DASH</b></div>
+        <h1>ENTER THE REALM</h1>
+        <p>Create your player profile, then choose Google, GOST ID, or Guest.</p>
+        <label class="name-field"><span>PLAYER NAME</span><input id="player-name" maxlength="18" autocomplete="nickname" value="ArcaneX"></label>
+        <div class="auth-row">
+          <button class="auth-btn google" data-auth="Google">G <span>GOOGLE</span></button>
+          <button class="auth-btn gost" data-auth="GOST ID">◈ <span>GOST ID</span></button>
+          <button class="auth-btn guest" data-auth="Guest">GUEST</button>
+        </div>
+        <div class="login-note">16+ • Your progress is saved on this device</div>
+      </div>
+    </section>
+
+    <section id="home" class="screen">
+      <header class="topbar">
+        <button id="profile-mini" class="profile-mini"></button>
+        <div class="currency"><span>🪙 <b id="gold">0</b> ＋</span><span>💎 <b id="diamonds">0</b> ＋</span><span>⚡ <b id="energy">0</b>/<b id="max-energy">0</b> ＋</span></div>
+        <div class="top-actions"><button data-open="friends">♟</button><button data-open="messages">✉</button><button data-open="settings">⚙</button><span class="online-dot">●</span></div>
+      </header>
+
+      <aside class="left-nav">
+        <button class="nav-btn active" data-open="shop">🛒 <span>STORE</span><i>!</i></button>
+        <button class="nav-btn" data-open="wheel">◉ <span>LUCK WHEEL</span></button>
+        <button class="nav-btn" data-open="profile">◉ <span>CHARACTER</span></button>
+        <button class="nav-btn" data-open="inventory">▣ <span>INVENTORY</span></button>
+        <button class="nav-btn" data-open="weapons">⚔ <span>WEAPONS</span></button>
+        <button class="nav-btn" data-open="emotes">♟ <span>EMOTES</span></button>
+        <button class="nav-btn" data-open="skills">✦ <span>SKILLS</span></button>
+        <button class="nav-btn" data-open="missions">▤ <span>MISSIONS</span><i>!</i></button>
+        <button class="nav-btn" data-open="ranking">🏆 <span>RANKING</span></button>
+        <button class="nav-btn" data-open="guild">♜ <span>GUILD</span></button>
+      </aside>
+
+      <section class="hero">
+        <div class="hero-bg"></div>
+        <div id="hero-character" class="hero-character"><div class="hero-aura"></div><div class="hero-body">⚔</div></div>
+        <button id="hero-emote" class="emote-trigger">EMOTES</button>
+      </section>
+
+      <aside class="right-stack">
+        <div class="promo card"><span>NEW</span><h3>VOID HUNTER BUNDLE</h3><p>Limited legendary set</p></div>
+        <button class="card action-card" data-open="wheel"><strong>LUCK WHEEL</strong><small>Weapons • skins • diamonds</small></button>
+        <button class="card action-card" data-open="daily"><strong>DAILY GIFT</strong><small id="daily-status">Free reward available</small></button>
+        <button class="card boss-card" data-open="boss"><strong>BOSS FIGHT</strong><small>Next boss challenge</small></button>
+        <div class="card quests"><strong>DAILY QUESTS</strong><p>★ Complete 3 missions <b id="q1">0/3</b></p><p>★ Win a boss fight <b id="q2">0/1</b></p><p>★ Use 5 potions <b id="q3">0/5</b></p></div>
+      </aside>
+
+      <div class="bottom-tools">
+        <div class="chat">💬 <span>[World] ArcaneX: Let's dominate!</span></div>
+        <div class="quick"><button data-open="events">EVENTS</button><button data-open="friends">FRIENDS</button><button data-open="inventory">ITEMS</button></div>
+      </div>
+
+      <div class="start-zone">
+        <button id="map-selector" class="map-selector">🗺 <span id="selected-world">WORLD 1 • CURSED FOREST</span> ▴</button>
+        <button id="start-btn" class="start-btn"><span>START</span><small id="start-label">MISSION 1 • ⚡10</small></button>
+        <button id="quick-emotes" class="quick-emotes">✦ EMOTES</button>
+      </div>
+    </section>
+
+    <section id="panel" class="screen panel-screen">
+      <div class="panel-head"><button id="panel-back">←</button><div><h1 id="panel-title"></h1><p id="panel-subtitle"></p></div><button id="panel-close">×</button></div>
+      <div id="panel-content" class="panel-content"></div>
+    </section>
+
+    <section id="map" class="screen panel-screen">
+      <div class="panel-head"><button data-back-home>←</button><div><h1>WORLD MAP</h1><p>Complete each world to unlock the next.</p></div><button data-back-home>×</button></div>
+      <div id="world-grid" class="world-grid"></div>
+    </section>
+
+    <section id="combat" class="screen combat-screen">
+      <canvas id="game-canvas"></canvas>
+      <div class="combat-hud">
+        <div class="combat-player"><div id="combat-avatar"></div><div><b id="combat-name">ArcaneX</b><div class="bar hp"><i id="player-hp"></i></div><small id="combat-hp-text"></small></div></div>
+        <div class="combat-info"><b id="mission-title">WORLD 1 • MISSION 1</b><span id="mission-objective">Defeat all enemies</span></div>
+        <div class="combat-right"><span>🪙 <b id="combat-gold">0</b></span><span>💎 <b id="combat-diamond">0</b></span><button id="combat-pause">Ⅱ</button></div>
+      </div>
+      <div class="combat-message" id="combat-message"></div>
+      <div class="touch-controls">
+        <div class="move-pad"><button data-key="a">←</button><button data-key="d">→</button><button data-key="w">↑</button><button data-key="s">↓</button></div>
+        <div class="combat-actions"><button data-action="dash">DASH</button><button data-action="jump">JUMP</button><button data-action="strike">⚔</button><button data-action="skill">✦</button><button data-action="shield">◉</button><button data-action="potion">🧪</button></div>
+      </div>
+      <div class="combat-pause" id="pause-menu"><div><h2>PAUSED</h2><button id="resume">RESUME</button><button id="quit-combat">QUIT MISSION</button></div></div>
+    </section>
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
