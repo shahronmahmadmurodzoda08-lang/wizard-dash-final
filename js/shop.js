@@ -1,0 +1,1 @@
+export const shopTabs=["ALL","WEAPONS","ARMOR","SKINS","BOOTS","MAGIC"];

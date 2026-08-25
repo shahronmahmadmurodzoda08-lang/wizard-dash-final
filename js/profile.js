@@ -1,0 +1,1 @@
+export function profileStats(s){return {level:s.level,xp:s.xp,world:s.world+1,mission:s.mission+1,kills:s.stats.kills,deaths:s.stats.deaths}}

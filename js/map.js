@@ -1,0 +1,1 @@
+import {renderMap} from "./ui.js";export function initMap(){renderMap()}
